@@ -53,4 +53,22 @@ public class SimplePendulum extends JFrame{
     public void setAngle(double angle){
         this.angle = angle;
     }
+
+    @Override
+    public void paint(Graphics g) {
+        int pivotX = getWidth() / 2;
+        int pivotY = getHeight() / 2;
+        int ballX = pivotX + (int) (Math.sin(angle) * length);
+        int ballY = pivotY + (int) (Math.cos(angle) * length);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, getWidth(), getHeight());
+        g2d.setStroke(new BasicStroke(5));
+        g2d.setColor(Color.RED);
+        g2d.drawLine(pivotX, pivotY, ballX, ballY);
+        g2d.setStroke(new BasicStroke());
+        g2d.fillOval(pivotX - 3, pivotY - 4, 7, 7);
+        g2d.setColor(Color.BLACK);
+        g2d.fillOval(ballX - 7, ballY - 7, 14, 14);
+    }
 }
