@@ -44,14 +44,16 @@ public class SimplePendulum extends JFrame implements Runnable{
                 angle += angleVel * timestep;
             }
             repaint();
-            try { Thread.sleep(10); } catch (InterruptedException ex) {}
+            try { Thread.sleep(10); } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     private double getAngleFromCentre(Point target)
     {
-        return Math.atan2(target.y - (getHeight() / 2),
-                target.x - (getHeight() / 2));
+        return Math.atan2(target.y - (getHeight() / 2.0),
+                target.x - (getHeight() / 2.0));
     }
 
     public void setAngleAcc(double angleAcc){
