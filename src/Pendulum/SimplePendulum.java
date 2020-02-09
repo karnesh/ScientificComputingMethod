@@ -3,7 +3,7 @@ package Pendulum;
 import javax.swing.*;
 import java.awt.*;
 
-public class SimplePendulum extends JFrame{
+public class SimplePendulum extends JFrame implements Runnable{
     private double mass;        // kg
     private double length;      // m
     private double angle;       // rad
@@ -11,22 +11,27 @@ public class SimplePendulum extends JFrame{
     private double angleVel = 0;
     private double g = 9.81;    // SI units
     private double timestep = 0.01;
-    private double damping = 1;
+    private double damping = 0;
 
     public SimplePendulum(double mass, double length, double angle){
         this.mass = mass;
         this.length = length;
         this.angle = angle;
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.pack();
+        this.setVisible(true);
     }
 
     public void run(){
         while (true)
         {
-            angleAcc = - (g / length) * Math.sin(angle) - (damping  * angleVel);
-            angleVel += angleAcc * timestep;
-            angle += angleVel * timestep;
+            for (int i = 0; i < 0.1/timestep; i++) {
+                angleAcc = - (g / length) * Math.sin(angle) - (damping  * angleVel);
+                angleVel += angleAcc * timestep;
+                angle += angleVel * timestep;
+            }
             repaint();
-            try { Thread.sleep(15); } catch (InterruptedException ex) {}
+            try { Thread.sleep(10); } catch (InterruptedException ex) {}
         }
     }
 
