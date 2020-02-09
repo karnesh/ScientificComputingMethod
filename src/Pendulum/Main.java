@@ -1,12 +1,13 @@
 package Pendulum;
 
 /**
- * Created by karnesh .
+ * Author: Karnesh.
  */
 
 public class Main {
     public static void main(String[] args)
     {
-        SimplePendulum p = new SimplePendulum();
+        SimplePendulum p = new SimplePendulum(1, 9.8,1.0);
+        p.run();
     }
 }
