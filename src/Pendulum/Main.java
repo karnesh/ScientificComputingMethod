@@ -7,7 +7,7 @@ package Pendulum;
 public class Main {
     public static void main(String[] args)
     {
-        SimplePendulum pendulum = new SimplePendulum(1, 9.8,1.0);
-        pendulum.run();
+        SimplePendulum pendulum = new SimplePendulum(1, 100,1.0);
+        new Thread(pendulum).start();
     }
 }

@@ -2,6 +2,7 @@ package Pendulum;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class SimplePendulum extends JFrame implements Runnable{
     private double mass;        // kg
@@ -11,15 +12,26 @@ public class SimplePendulum extends JFrame implements Runnable{
     private double angleVel = 0;
     private double g = 9.81;    // SI units
     private double timestep = 0.01;
-    private double damping = 0;
+    private double damping = 0.05;
 
     public SimplePendulum(double mass, double length, double angle){
         this.mass = mass;
         this.length = length;
         this.angle = angle;
+
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.pack();
         this.setVisible(true);
+
+        addMouseListener(new MouseAdapter()
+        {
+            public void mousePressed(MouseEvent me)
+            {
+                setAngle((Math.PI / 2) - getAngleFromCentre(me.getPoint()));
+                setAngleAcc(0);
+                repaint();
+            }
+        });
     }
 
     public void run(){
@@ -35,24 +47,18 @@ public class SimplePendulum extends JFrame implements Runnable{
         }
     }
 
-    public double getMass(){
-        return mass;
-    }
-
-    public void setMass(double mass){
-        this.mass = mass;
+    private double getAngleFromCentre(Point target)
+    {
+        return Math.atan2(target.y - (getHeight() / 2),
+                target.x - (getHeight() / 2));
     }
 
     public double getLength(){
         return length;
     }
 
-    public void setLength(double length){
-        this.length = length;
-    }
-
-    public double getAngle(){
-        return angle;
+    public void setAngleAcc(double angleAcc){
+        this.angleAcc = angleAcc;
     }
 
     public void setAngle(double angle){
@@ -74,6 +80,7 @@ public class SimplePendulum extends JFrame implements Runnable{
         int ballX = pivotX + (int) (Math.sin(angle) * length);
         int ballY = pivotY + (int) (Math.cos(angle) * length);
         Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.WHITE);
         g2d.fillRect(0, 0, getWidth(), getHeight());
         g2d.setStroke(new BasicStroke(5));
@@ -83,5 +90,11 @@ public class SimplePendulum extends JFrame implements Runnable{
         g2d.fillOval(pivotX - 3, pivotY - 4, 7, 7);
         g2d.setColor(Color.BLACK);
         g2d.fillOval(ballX - 7, ballY - 7, 14, 14);
+    }
+
+    @Override
+    public Dimension getPreferredSize() {
+        int width = (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.7);
+        return new Dimension(width, width);
     }
 }
