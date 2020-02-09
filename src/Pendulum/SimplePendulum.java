@@ -54,6 +54,14 @@ public class SimplePendulum extends JFrame{
         this.angle = angle;
     }
 
+    public double getTimestep(){
+        return timestep;
+    }
+
+    public void setTimestep(double timestep){
+        this.timestep = timestep;
+    }
+
     @Override
     public void paint(Graphics g) {
         int pivotX = getWidth() / 2;
