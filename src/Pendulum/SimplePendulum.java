@@ -12,7 +12,7 @@ public class SimplePendulum extends JFrame implements Runnable{
     private double angleVel = 0;
     private double g = 9.81;    // SI units
     private double timestep = 0.01;
-    private double damping = 0.05;
+    private double damping = 0.005;
 
     public SimplePendulum(double mass, double length, double angle){
         this.mass = mass;
@@ -29,6 +29,7 @@ public class SimplePendulum extends JFrame implements Runnable{
             {
                 setAngle((Math.PI / 2) - getAngleFromCentre(me.getPoint()));
                 setAngleAcc(0);
+                setAngleVel(0);
                 repaint();
             }
         });
@@ -53,10 +54,6 @@ public class SimplePendulum extends JFrame implements Runnable{
                 target.x - (getHeight() / 2));
     }
 
-    public double getLength(){
-        return length;
-    }
-
     public void setAngleAcc(double angleAcc){
         this.angleAcc = angleAcc;
     }
@@ -65,12 +62,8 @@ public class SimplePendulum extends JFrame implements Runnable{
         this.angle = angle;
     }
 
-    public double getTimestep(){
-        return timestep;
-    }
-
-    public void setTimestep(double timestep){
-        this.timestep = timestep;
+    public void setAngleVel(double angleVel){
+        this.angleVel = angleVel;
     }
 
     @Override
