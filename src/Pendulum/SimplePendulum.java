@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**	A simple Java program to demonstrate simple damped pendulum **/
+
 public class SimplePendulum extends JFrame implements Runnable{
     private double mass;        // kg
     private double length;      // m
@@ -14,6 +16,7 @@ public class SimplePendulum extends JFrame implements Runnable{
     private double timestep = 0.01;
     private double damping = 0.005;
 
+    // constructor method to initialize the simulation:
     public SimplePendulum(double mass, double length, double angle){
         this.mass = mass;
         this.length = length;
@@ -23,6 +26,7 @@ public class SimplePendulum extends JFrame implements Runnable{
         this.pack();
         this.setVisible(true);
 
+        // update pendulum position when mouse is clicked
         addMouseListener(new MouseAdapter()
         {
             public void mousePressed(MouseEvent me)
@@ -35,6 +39,7 @@ public class SimplePendulum extends JFrame implements Runnable{
         });
     }
 
+    // run method, called by the calculation thread:
     public void run(){
         while (true)
         {

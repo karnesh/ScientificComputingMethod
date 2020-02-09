@@ -1,7 +1,7 @@
 package Pendulum;
 
 /**
- * Author: Karnesh.
+ * @author: Karnesh
  */
 
 public class Main {
