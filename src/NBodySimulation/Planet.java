@@ -61,6 +61,9 @@ public class Planet {
         return Fy;
     }
 
+    /*
+     Update velocities and position of the plane after time dt
+     */
     public void update(double dt, double fX, double fY){
         double accX = fX/mass;
         double accY = fY/mass;
