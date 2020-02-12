@@ -45,6 +45,7 @@ public class NBody {
 
             for(int i = 0; i < planets.length; i++){
                 for(int j = 0; j < planets.length; j++){
+                    if(i==j) continue;
                     xForces[i] += planets[i].calcForceExertedByX(planets[j]);
                     yForces[i] += planets[i].calcForceExertedByY(planets[j]);
                 }
@@ -58,6 +59,7 @@ public class NBody {
             }
 
             StdDraw.show();
+            StdDraw.pause(15);
         }
 
     }
