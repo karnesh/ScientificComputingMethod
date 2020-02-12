@@ -43,4 +43,22 @@ public class Planet {
         return F;
     }
 
+    // gravitational force in x-direction
+    public double calcForceExertedByX(Planet p){
+        double dx = p.xxPos - xxPos;
+        double F = calcForceExertedBy(p);
+        double r = calcDistance(p);
+        double Fx = F * dx / r;
+        return Fx;
+    }
+
+    // gravitational force in y-direction
+    public double calcForceExertedByY(Planet p){
+        double dy = p.yyPos - yyPos;
+        double F = calcForceExertedBy(p);
+        double r = calcDistance(p);
+        double Fy = F * dy / r;
+        return Fy;
+    }
+
 }
