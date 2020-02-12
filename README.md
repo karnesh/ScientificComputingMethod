@@ -6,4 +6,4 @@ The projects are:
 This project simulates the motion of a pendulum using Newton's second law. It takes into account damping. The equations of motion are integrated using Euler's algorithm.
 
 ## N Body Simulation
-This motion of planets around the sun is simulated in this project. 
+The motion of N objects in a plane is simulated in this project. The motion follows Law of Universal Gravitation and objects exert gravitational forces on each other. This project is inspired from CS61B course data strucutres course. It uses standard libraries such as StdDraw for animation. The libraries can be found [here](https://introcs.cs.princeton.edu/).
