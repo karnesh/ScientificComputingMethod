@@ -1,4 +1,6 @@
-package NBodySimulation;
+package NBodySimulation.tests;
+
+import NBodySimulation.Planet;
 
 import java.math.*;
 

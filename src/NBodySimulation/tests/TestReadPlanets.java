@@ -1,4 +1,7 @@
-package NBodySimulation;
+package NBodySimulation.tests;
+
+import NBodySimulation.NBody;
+import NBodySimulation.Planet;
 
 /**
  *  Tests Nbody.readPlanets. Reads in ./data/planets.txt and checks output of

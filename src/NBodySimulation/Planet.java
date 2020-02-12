@@ -28,7 +28,9 @@ public class Planet {
         imgFileName = p.imgFileName;
     }
 
-    // calculate distance between two planets
+    /*
+     calculate distance between two planets
+     */
     public double calcDistance(Planet p){
         double dx = Math.pow(p.xxPos - xxPos,2.0);
         double dy = Math.pow(p.yyPos - yyPos,2.0);
@@ -36,14 +38,18 @@ public class Planet {
         return r;
     }
 
-    // calculate gravitational force between two planets
+    /*
+     calculate gravitational force between two planets
+     */
     public double calcForceExertedBy(Planet p){
         double r = calcDistance(p);
         double F = G * p.mass * mass / Math.pow(r,2);
         return F;
     }
 
-    // gravitational force in x-direction
+    /*
+     calculate gravitational force in x-direction
+     */
     public double calcForceExertedByX(Planet p){
         double dx = p.xxPos - xxPos;
         double F = calcForceExertedBy(p);
@@ -52,7 +58,9 @@ public class Planet {
         return Fx;
     }
 
-    // gravitational force in y-direction
+    /*
+     compute gravitational force in y-direction
+     */
     public double calcForceExertedByY(Planet p){
         double dy = p.yyPos - yyPos;
         double F = calcForceExertedBy(p);
@@ -73,6 +81,10 @@ public class Planet {
         yyPos += dt * yyVel;
     }
 
+    /*
+    Method to draw planets
+    Uses Standard draw library from http://introcs.cs.princeton.edu
+    */
     public void draw(){
         String path = "./images/";
         StdDraw.picture(xxPos, yyPos,path+imgFileName);

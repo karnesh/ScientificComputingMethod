@@ -39,6 +39,7 @@ public class NBody {
 
         StdDraw.enableDoubleBuffering();
 
+        // animate motion of planets
         for(double t = 0; t<=T; t+=dt){
             double[] xForces = new double[planets.length];
             double[] yForces = new double[planets.length];
@@ -62,6 +63,7 @@ public class NBody {
             StdDraw.pause(15);
         }
 
+        // print final output
         StdOut.printf("%d\n", planets.length);
         StdOut.printf("%.2e\n", radius);
         for (int i = 0; i < planets.length; i++) {

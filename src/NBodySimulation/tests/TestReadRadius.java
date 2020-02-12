@@ -1,4 +1,6 @@
-package NBodySimulation;
+package NBodySimulation.tests;
+
+import NBodySimulation.NBody;
 
 /**
  *  Tests Nbody.readRadius. Reads in ./data/planets.txt and checks to see that
