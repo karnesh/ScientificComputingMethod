@@ -40,6 +40,8 @@ public class NBody {
         StdDraw.enableDoubleBuffering();
         StdDraw.setScale(-radius, radius);
         StdDraw.picture(0,0,"./images/starfield.jpg");
+        for(Planet planet: planets)
+            planet.draw();
         StdDraw.show();
     }
 }

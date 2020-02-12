@@ -73,4 +73,9 @@ public class Planet {
         yyPos += dt * yyVel;
     }
 
+    public void draw(){
+        String path = "./images/";
+        StdDraw.picture(xxPos, yyPos,path+imgFileName);
+    }
+
 }
