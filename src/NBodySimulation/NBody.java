@@ -20,4 +20,12 @@ public class NBody {
         }
         return planet;
     }
+
+    public static void main(String[] args){
+        double T = Double.parseDouble(args[0]);
+        double dt = Double.parseDouble(args[1]);
+        String filename = args[2];
+        readRadius(filename);
+        readPlanets(filename);
+    }
 }
